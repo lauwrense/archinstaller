@@ -27,7 +27,16 @@ passwd root
 pacman -S ${DRIVERS[@]}
 
 # ===== GRUB =====
-pacman -S grub efibootmgr mtools dosfstools os-prober ntfs-3g
+GRUB=(
+    grub
+    efibootmgr
+    mtools
+    dosfstools
+    os-prober
+    ntfs-3g
+)
+
+pacman -S ${GRUB[@]}
 
 # Install GRUB
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -116,6 +125,8 @@ AUR_PACKAGES=(
     # zoom
 )
 
+sudo pacman -S base-devel --needed
+
 cd /home/${USER}
 echo "Installing Yay"
 git clone https://aur.archlinux.org/yay.git
@@ -139,7 +150,7 @@ PACKAGES=(
     cmake
     gcc
     zig
-    rustup
+    # rustup
     go
     docker
     # godot
@@ -164,6 +175,7 @@ PACKAGES=(
     bitwarden-cli
     stow
     starship
+    reflector
 
 
     ###> VIDEO AND AUDIO
@@ -174,6 +186,8 @@ PACKAGES=(
     ###> WINDOW MANAGER
     sway
     swaylock
+    swayidle
+    waybar
     brightnessctl
     gammastep
     grim
@@ -185,7 +199,18 @@ PACKAGES=(
     steam
 )
 
+SYS_E_PACKAGES=(
+    reflector.timer
+)
+
+
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy
 
 pacman -S ${PACKAGES[@]}
+
+for sys in ${SYS_E_PACKAGES[@]}; do
+    systemctl enable ${system}
+done
+
+reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
