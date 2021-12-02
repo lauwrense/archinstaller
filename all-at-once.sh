@@ -47,12 +47,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 NETWORK=(
     networkmanager
     dialog
-    firewalld
 )
 
 SYS_E_NET=(
     NetworkManager
-    firewalld.service
 )
 
 pacman -S ${NETWORK[@]}
@@ -212,5 +210,3 @@ pacman -S ${PACKAGES[@]}
 for sys in ${SYS_E_PACKAGES[@]}; do
     systemctl enable ${system}
 done
-
-reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
