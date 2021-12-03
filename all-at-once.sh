@@ -10,6 +10,11 @@ DRIVERS=(
     linux-headers
 )
 
+USER="arch"
+TIMEZONE="Asia/Manila"
+LOCALE="en_US.UTF-8 UTF-8"
+HOSTNAME="arch"
+
 # Set time zone and locale
 timedatectl set-ntp true
 ln -sf usr/share/zoneinfo/${TIMEZONE} /etc/localtime
@@ -24,7 +29,7 @@ echo "::1       localhost" >>/etc/hosts
 echo "127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}" >>/etc/hosts
 passwd root
 
-pacman -S ${DRIVERS[@]}
+pacman -S ${DRIVERS[@]} --overwrite "*"
 
 # ===== GRUB =====
 GRUB=(
@@ -108,7 +113,6 @@ for system in ${SYS_E_PRINT[@]}; do
 done
 
 #===== USER =====
-USER="arch"
 
 useradd -m -g users -G wheel ${USER}
 passwd ${USER}
