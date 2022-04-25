@@ -10,10 +10,10 @@ DRIVERS=(
     linux-headers
 )
 
-USER="arch"
+USER="tenwasa"
 TIMEZONE="Asia/Manila"
 LOCALE="en_US.UTF-8 UTF-8"
-HOSTNAME="arch"
+HOSTNAME="lauw"
 
 # Set time zone and locale
 timedatectl set-ntp true
@@ -121,10 +121,8 @@ sed -i '/# %wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
 #===== AUR =====
 AUR_PACKAGES=(
     cava
-    macchina
     brave-bin
     nvim-packer-git
-    # zoom
 )
 
 sudo pacman -S base-devel --needed
@@ -144,29 +142,16 @@ PACKAGES=(
     ###> DEVELOPMENT
     kitty
     neovim
-    nodejs
-    # electron
-    npm
-    yarn
     clang
-    cmake
     gcc
-    zig
-    # rustup
-    go
     docker
-    # godot
 
     ###> TERMINAL UTILITIES
     ripgrep
     sd
     bat
-    thefuck
-    tldr
     curl
     wget
-    glances
-    htop
     ranger
     zoxide
     exa
@@ -174,7 +159,6 @@ PACKAGES=(
     unrar
     unzip
     zip
-    bitwarden-cli
     stow
     starship
     reflector
@@ -197,8 +181,8 @@ PACKAGES=(
 
     ###> EXTRAS
     discord
-    # neomutt
     steam
+    neofetch
 )
 
 SYS_E_PACKAGES=(
