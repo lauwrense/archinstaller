@@ -122,7 +122,6 @@ sed -i '/# %wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
 AUR_PACKAGES=(
     cava
     brave-bin
-    nvim-packer-git
 )
 
 sudo pacman -S base-devel --needed
@@ -144,7 +143,8 @@ PACKAGES=(
     neovim
     clang
     gcc
-    docker
+    zig
+    rustup
 
     ###> TERMINAL UTILITIES
     ripgrep
@@ -198,3 +198,5 @@ pacman -S ${PACKAGES[@]}
 for sys in ${SYS_E_PACKAGES[@]}; do
     systemctl enable ${system}
 done
+
+curl https://sh.rustup.rs -sSf | sh

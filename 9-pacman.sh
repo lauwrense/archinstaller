@@ -2,27 +2,17 @@
 
 PACKAGES=(
     ###> DEVELOPMENT
-    kitty
     neovim
-    nodejs
-    # electron
-    npm
-    yarn
     clang
     cmake
     gcc
     zig
     rustup
-    go
-    docker
-    # godot
 
     ###> TERMINAL UTILITIES
     ripgrep
     sd
     bat
-    thefuck
-    tldr
     curl
     wget
     glances
@@ -34,7 +24,6 @@ PACKAGES=(
     unrar
     unzip
     zip
-    bitwarden-cli
     stow
     starship
 
@@ -54,7 +43,6 @@ PACKAGES=(
 
     ###> EXTRAS
     discord
-    # neomutt
     steam
 )
 
