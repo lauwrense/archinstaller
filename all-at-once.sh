@@ -69,6 +69,7 @@ BLUETOOTH=(
     bluez
     bluez-utils
 )
+modprobe btusb
 
 SYS_E_BLUE=(
     bluetooth
@@ -122,6 +123,8 @@ sed -i '/# %wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
 AUR_PACKAGES=(
     cava
     brave-bin
+    visual-studio-code-bin
+    # sov
 )
 
 sudo pacman -S base-devel --needed
@@ -139,20 +142,31 @@ sudo -u ${USER} yay -S ${AUR_PACKAGES[@]}
 #===== PACKAGES =====
 PACKAGES=(
     ###> DEVELOPMENT
-    kitty
+    # kitty
+    alacritty
     neovim
+    helix
+    tmux
+
     clang
+    llvm
+    lldb
+    lld
     gcc
+
     zig
-    rustup
+    # rustup
+
+    python
+    julia
 
     ###> TERMINAL UTILITIES
     ripgrep
     sd
+    fd
     bat
     curl
     wget
-    ranger
     zoxide
     exa
     rsync
@@ -165,6 +179,7 @@ PACKAGES=(
 
 
     ###> VIDEO AND AUDIO
+    mvi
     mpv
     mpd
     ncmpcpp
@@ -173,11 +188,15 @@ PACKAGES=(
     sway
     swaylock
     swayidle
+    dunst
+    bemenu
     waybar
     brightnessctl
     gammastep
     grim
     slurp
+    xdg-desktop-portal-wlr
+    # i3
 
     ###> EXTRAS
     discord
@@ -200,3 +219,7 @@ for sys in ${SYS_E_PACKAGES[@]}; do
 done
 
 curl https://sh.rustup.rs -sSf | sh
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+# Keychron Keyboard Fn keys
+echo "options hid_apple fnmode=1" | sudo tee /etc/modprobe.d/hid_apple.conf
